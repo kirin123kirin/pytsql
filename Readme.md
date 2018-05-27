@@ -4,7 +4,7 @@
 python3
 
 # インストール
-``` Shell
+```bash
 $ python -c "import site; print(site.getsitepackages()[0])"
 -> C:\python3\Lib\site-packages
 
@@ -115,7 +115,7 @@ walker.walk(printer, tree)
 * antlr-4.7.1-complete.jarをダウンロードする（一回作ってしまえば必要ない）
 * antlr4-python3-runtimeをインストールする
 
-```Shell
+```bash
 pip install antlr4-python3-runtime
 ```
 
