@@ -4,7 +4,7 @@
 python3
 
 # インストール
-``` 
+``` Shell
 $ python -c "import site; print(site.getsitepackages()[0])"
 -> C:\python3\Lib\site-packages
 
@@ -14,7 +14,7 @@ $ git clone https://github.com/kirin123kirin/pytsql.git
 
 # 使い方
 ## 例１：使用しているカラムリストを取得する
-```
+```Python
 import pytsql
 from pprint import pprint
 
@@ -27,7 +27,7 @@ Out[1]: ['A', 'B']
 ```
 
 ## 例２：SQL構造を全部抜き出す
-```
+```Python
 pprint(parser.tolist())
 
 Out[1]: ['query_specification',
@@ -43,14 +43,14 @@ Out[1]: ['query_specification',
 ```
 
 ## 例３：コンテキストを抜き出す
-```
+```Python
 pprint(parser.lookup())
 
 Out[1]: {'column_elem': ['A', 'B'], 'keywords': ['SELECT', 'FROM'], 'table_name': ['C']}
 ```
 
 ## 例４：自分でパーサを定義する
-```
+```Python
 import pytsql
 
 class Render(pytsql.ParserListener):
@@ -86,7 +86,7 @@ pytsql.ParserListenerはGrammarビルドで出来上がった「TSqlParserListen
 大元から自作したい時は
 本家の[ReadMe](https://github.com/antlr/antlr4/blob/master/doc/python-target.md#how-do-i-create-and-run-a-custom-listener)参照しながら実装してほしい。
 
-```
+```Python
 import pytsql
 
 class KeyPrinter(pytsql.TSqlParserListener):
@@ -115,14 +115,14 @@ walker.walk(printer, tree)
 * antlr-4.7.1-complete.jarをダウンロードする（一回作ってしまえば必要ない）
 * antlr4-python3-runtimeをインストールする
 
-```
+```Shell
 pip install antlr4-python3-runtime
 ```
 
 ## antlr4によるTsqlpythonパーサビルド手順
 この文法のところ[antlr/grammars-v4](https://github.com/antlr/grammars-v4)から使えばいろいろ応用可能
 
-```
+```Shell
 # ビルドディレクトリ作成
 mkdir $TEMP/pytsql
 cd $TEMP/pytsql
