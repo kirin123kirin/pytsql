@@ -103,13 +103,15 @@ walker.walk(printer, tree)
 
 ```
 
-* 備忘録
-# ビルド環境
+# 備忘録
+## ビルド環境
+|環境|バージョン等|
+|:-|:-|
 |OS|windows7 64bit|
 |python version|3.6.5|
 |jre|Java(TM) SE Runtime Environment (build 1.8.0_171-b11)|
 
-# pythonパーサビルドで必要な環境
+## pythonパーサビルドで必要な環境
 * antlr-4.7.1-complete.jarをダウンロードする（一回作ってしまえば必要ない）
 * antlr4-python3-runtimeをインストールする
 
@@ -117,7 +119,7 @@ walker.walk(printer, tree)
 pip install antlr4-python3-runtime
 ```
 
-# antlr4によるTsqlpythonパーサビルド手順
+## antlr4によるTsqlpythonパーサビルド手順
 この文法のところ[antlr/grammars-v4](https://github.com/antlr/grammars-v4)から使えばいろいろ応用可能
 
 ```
