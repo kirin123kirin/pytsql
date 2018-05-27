@@ -1,4 +1,4 @@
-# Transact-SQL 用python解析器作成方法
+# Transact-SQL 用python解析器
 
 # 動作環境
 python3
