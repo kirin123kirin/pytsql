@@ -2,8 +2,12 @@ from antlr4 import *
 from .TSqlParser import TSqlParser
 from .TSqlLexer import *
 from .TSqlParserListener import TSqlParserListener
-import sys, re
+import re
 from collections import defaultdict
+try:
+    import sqlparse
+except:
+    sqlparse = None
 
 refunc = re.compile("^(enter|exit)")
 def getfunc(frame):
@@ -21,7 +25,6 @@ class ParserListener(TSqlParserListener):
         self.context = defaultdict(set)
         self._list = None
         self._index = None
-    
     
     def tolist(self):
         if self._list is not None:
@@ -79,6 +82,34 @@ class ParserListener(TSqlParserListener):
 
     def __dir__(self):
         return super().__dir__() + list(self.lookup().keys())
+
+    def format(self, encoding=None, comma_first=True, keyword_case="upper", identifier_case="capitalize", strip_comments=False, reindent=True, indent_tabs=False, indent_width=8, wrap_after=0, output_format="python"):
+        """ [sqlparse](https://sqlparse.readthedocs.io/en/latest/)
+            Params:
+            	keyword_case
+            	    Changes how keywords are formatted. Allowed values are “upper”, “lower” and “capitalize”.
+            	identifier_case
+            	    Changes how identifiers are formatted. Allowed values are “upper”, “lower”, and “capitalize”.
+            	strip_comments
+            	    If True comments are removed from the statements.
+            	truncate_strings
+            	    If truncate_strings is a positive integer, string literals longer than the given value will be truncated.
+            	truncate_char (default: “[…]”)
+            	    If long string literals are truncated (see above) this value will be append to the truncated string.
+            	reindent
+            	    If True the indentations of the statements are changed.
+            	indent_tabs
+            	    If True tabs instead of spaces are used for indentation.
+            	indent_width
+            	    The width of the indentation, defaults to 2.
+            	wrap_after
+            	    The column limit for wrapping comma-separated lists. If unspecified, it puts every item in the list on its own line.
+            	output_format
+            	    If given the output is additionally formatted to be used as a variable in a programming language. Allowed values are “python” and “php”. 
+        """
+        if sqlparse is None:
+            raise ImportError("import module not found. Please `pip install sqlparse`")
+        return sqlparse.format(self.sql ,encoding=encoding, comma_first=comma_first, keyword_case=keyword_case, identifier_case=identifier_case, strip_comments=strip_comments, reindent=reindent, indent_tabs=indent_tabs, indent_width=indent_width, wrap_after=wrap_after, output_format=output_format)
 
 def parse(sql, start="tsql_file", callback=ParserListener):
     listener = callback(sql, start)
