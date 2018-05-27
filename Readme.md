@@ -79,9 +79,24 @@ Out[1]: ['A', 'BF']
 
 ```
 
+## おまけ Formatting
+```Python
+import pytsql
+
+print(pytsql.parse("select a,v from A where a is not NULL;").format())
+
+Out[1]:
+SELECT a
+     , v
+FROM A
+WHERE a IS NOT NULL;
+
+
+```
 ## メモ
 pytsql.ParserListenerはGrammarビルドで出来上がった「TSqlParserListener」をオーバライドした自作クラス
-いろいろぶち込んでしまったので、__init__の引数を増やしてるため、オリジナルの引数と異なってしまった。
+いろいろぶち込んでしまった。
+ので本家のListenerと比べ__init__の引数が増えてしまった。
 
 大元から自作したい時は
 本家の[ReadMe](https://github.com/antlr/antlr4/blob/master/doc/python-target.md#how-do-i-create-and-run-a-custom-listener)参照しながら実装してほしい。
@@ -103,7 +118,7 @@ walker.walk(printer, tree)
 
 ```
 
-# 備忘録
+# 他文法に応用できるので今回pytsqlのビルド手順を備忘
 ## ビルド環境
 |環境|バージョン等|
 |:-|:-|
@@ -120,7 +135,7 @@ pip install antlr4-python3-runtime
 ```
 
 ## antlr4によるTsqlpythonパーサビルド手順
-この文法のところ[antlr/grammars-v4](https://github.com/antlr/grammars-v4)から使えばいろいろ応用可能
+他文法応用には[antlr/grammars-v4](https://github.com/antlr/grammars-v4)から使えばいろいろ応用可能
 
 ```Shell
 # ビルドディレクトリ作成
