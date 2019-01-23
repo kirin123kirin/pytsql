@@ -113,7 +113,7 @@ class KeyPrinter(pytsql.TSqlParserListener):
 
 tree = parser.startRule()
 printer = KeyPrinter()
-walker = ParseTreeWalker()
+walker = pytsql.ParseTreeWalker()
 walker.walk(printer, tree)
 
 ```
