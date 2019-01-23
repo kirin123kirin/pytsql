@@ -1,4 +1,4 @@
-# Generated from TSqlParser.g4 by ANTLR 4.7.1
+# Generated from TSqlParser.g4 by ANTLR 4.7.2
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .TSqlParser import TSqlParser
@@ -7,7 +7,7 @@ else:
 
 # This class defines a complete listener for a parse tree produced by TSqlParser.
 class TSqlParserListener(ParseTreeListener):
-	
+
     # Enter a parse tree produced by TSqlParser#tsql_file.
     def enterTsql_file(self, ctx:TSqlParser.Tsql_fileContext):
         pass

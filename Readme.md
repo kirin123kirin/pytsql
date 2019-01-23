@@ -127,7 +127,7 @@ walker.walk(printer, tree)
 |jre|Java(TM) SE Runtime Environment (build 1.8.0_171-b11)|
 
 ## pythonパーサビルドで必要な環境
-* antlr-4.7.1-complete.jarをダウンロードする（一回作ってしまえば必要ない）
+* antlr-4.7.2-complete.jarをダウンロードする（一回作ってしまえば必要ない）
 * antlr4-python3-runtimeをインストールする
 
 ```bash
@@ -143,7 +143,7 @@ mkdir $TEMP/pytsql
 cd $TEMP/pytsql
 
 # antlr4 ダウンロード
-wget https://www.antlr.org/download/antlr-4.7.1-complete.jar
+wget https://www.antlr.org/download/antlr-4.7.2-complete.jar
 
 # T-SQL 文法データダウンロード
 wget https://raw.githubusercontent.com/antlr/grammars-v4/master/tsql/TSqlLexer.g4
@@ -153,8 +153,8 @@ wget https://raw.githubusercontent.com/antlr/grammars-v4/master/tsql/TSqlParser.
 pip install antlr4-python3-runtime
 
 # Grammerビルド
-java -Xmx500M -cp antlr-4.7.1-complete.jar org.antlr.v4.Tool -Dlanguage=Python3 TSqlLexer.g4
-java -Xmx500M -cp antlr-4.7.1-complete.jar org.antlr.v4.Tool -Dlanguage=Python3 TSqlParser.g4
+java -Xmx500M -cp antlr-4.7.2-complete.jar org.antlr.v4.Tool -Dlanguage=Python3 TSqlLexer.g4
+java -Xmx500M -cp antlr-4.7.2-complete.jar org.antlr.v4.Tool -Dlanguage=Python3 TSqlParser.g4
 
 # 出来上がったparserファイル達をsite-packages下に持ってく
 mklib=`python -c "import site; print(site.getsitepackages()[0])"`

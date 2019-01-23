@@ -18,11 +18,11 @@ def build_antlr():
 
     builddir = os.path.join(os.environ["TEMP"], "pytsql.tmp")
     os.chdir(builddir)
-    wget("https://www.antlr.org/download/antlr-4.7.1-complete.jar")
+    wget("https://www.antlr.org/download/antlr-4.7.2-complete.jar")
     wget("https://raw.githubusercontent.com/antlr/grammars-v4/master/tsql/TSqlLexer.g4")
     wget("https://raw.githubusercontent.com/antlr/grammars-v4/master/tsql/TSqlParser.g4")
-    os.system("java -Xmx500M -cp antlr-4.7.1-complete.jar org.antlr.v4.Tool -Dlanguage=Python3 TSqlLexer.g4")
-    os.system("java -Xmx500M -cp antlr-4.7.1-complete.jar org.antlr.v4.Tool -Dlanguage=Python3 TSqlParser.g4")
+    os.system("java -Xmx500M -cp antlr-4.7.2-complete.jar org.antlr.v4.Tool -Dlanguage=Python3 TSqlLexer.g4")
+    os.system("java -Xmx500M -cp antlr-4.7.2-complete.jar org.antlr.v4.Tool -Dlanguage=Python3 TSqlParser.g4")
     libdir = site.getsitepackages()[0]
     instdir = os.path.join(libdir, "pytsql")
     os.mkdir(instdir)
